@@ -74,7 +74,7 @@
                                         'border-gray-200': selectedProfile !== profile.id
                                     }"
                                     @click="selectProfile(profile.id)">
-                                    <img :src="{ { url('' / images / avatars / ' + profile.avatar + '.png '"
+                                    <img :src="{{ url('/images/avatars/') }} + profile.avatar + '.png '"
                                         class="w-16 h-16 rounded-full mb-2" :alt="profile.name">
                                     <span class="font-medium" x-text="profile.name"></span>
                                     <span class="text-xs text-gray-500"
@@ -114,7 +114,7 @@
                                             'border-gray-200': newProfileAvatar !== avatar
                                         }"
                                         @click="newProfileAvatar = avatar">
-                                        <img :src="{ { url('' / images / avatars / ' + avatar + '.png '"
+                                        <img :src="{{ url('/images/avatars/') }} + avatar + '.png '"
                                             class="w-12 h-12 rounded-full" :alt="'Avatar ' + avatar">
                                     </button>
                                 </template>
