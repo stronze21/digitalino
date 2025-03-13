@@ -16,7 +16,7 @@
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
                 <div class="md:flex">
                     <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-blue-500 p-6 flex items-center justify-center">
-                        <img src="{{ url(('/images/mascot.png') }}" alt="DIGITALINO Mascot" class="w-48 h-48 object-contain">
+                        <img src="{{ url('/images/mascot.png') }}" alt="DIGITALINO Mascot" class="w-48 h-48 object-contain">
                     </div>
                     <div class="md:w-2/3 p-6 md:p-8">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
