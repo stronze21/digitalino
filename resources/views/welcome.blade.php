@@ -18,7 +18,7 @@
 
         <!-- Main mascot/logo -->
         <div class="mb-8 relative">
-            <img src="/images/mascot.png" alt="DIGITALINO Mascot" class="w-64 h-64 object-contain">
+            <img src="{{ url('/images/mascot.png') }}"alt="DIGITALINO Mascot" class="w-64 h-64 object-contain">
 
             <!-- Floating animated stars -->
             <div class="absolute -top-4 -right-4 animate-pulse">
@@ -68,10 +68,13 @@
                             <template x-for="profile in profiles" :key="profile.id">
                                 <button
                                     class="flex flex-col items-center p-3 border-2 rounded-xl transition hover:bg-blue-50"
-                                    :class="{ 'border-blue-500 bg-blue-50': selectedProfile === profile
-                                        .id, 'border-gray-200': selectedProfile !== profile.id }"
+                                    :class="{
+                                        'border-blue-500 bg-blue-50': selectedProfile === profile
+                                            .id,
+                                        'border-gray-200': selectedProfile !== profile.id
+                                    }"
                                     @click="selectProfile(profile.id)">
-                                    <img :src="'/images/avatars/' + profile.avatar + '.png'"
+                                    <img :src="{ { url('' / images / avatars / ' + profile.avatar + '.png '"
                                         class="w-16 h-16 rounded-full mb-2" :alt="profile.name">
                                     <span class="font-medium" x-text="profile.name"></span>
                                     <span class="text-xs text-gray-500"
@@ -105,11 +108,14 @@
                             <div class="grid grid-cols-4 gap-2">
                                 <template x-for="avatar in avatars" :key="avatar">
                                     <button class="p-1 border-2 rounded-lg transition"
-                                        :class="{ 'border-blue-500 bg-blue-50': newProfileAvatar ===
-                                            avatar, 'border-gray-200': newProfileAvatar !== avatar }"
+                                        :class="{
+                                            'border-blue-500 bg-blue-50': newProfileAvatar ===
+                                                avatar,
+                                            'border-gray-200': newProfileAvatar !== avatar
+                                        }"
                                         @click="newProfileAvatar = avatar">
-                                        <img :src="'/images/avatars/' + avatar + '.png'" class="w-12 h-12 rounded-full"
-                                            :alt="'Avatar ' + avatar">
+                                        <img :src="{ { url('' / images / avatars / ' + avatar + '.png '"
+                                            class="w-12 h-12 rounded-full" :alt="'Avatar ' + avatar">
                                     </button>
                                 </template>
                             </div>

@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Learn subtraction with jungle animals!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="/images/characters/monkey.png" alt="Teacher Monkey" class="h-40">
+                        <img src="{{ url('/images/characters/monkey.png') }}"alt="Teacher Monkey" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-pink-50 rounded-xl p-4 mb-6 text-left">
@@ -90,7 +90,7 @@
                                 <div class="bg-white rounded-xl p-4 shadow-md">
                                     <div class="mb-4 flex flex-wrap justify-center">
                                         <template x-for="i in currentProblem.num1">
-                                            <img :src="'/images/counting/banana.png'" class="h-8 w-8 m-1"
+                                            <img :src="{ { url('' / images / counting / banana.png '" class="h-8 w-8 m-1"
                                                 :class="{ 'opacity-30': i > (currentProblem.num1 - currentProblem.num2) }"
                                                 alt="banana">
                                         </template>
@@ -169,21 +169,22 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="/images/characters/monkey-happy.png" alt="Happy Monkey" class="h-40 mx-auto">
+                                <img src="{{ url('/images/characters/monkey-happy.png') }}"alt="Happy Monkey"
+                                    class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic subtracting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="/images/characters/monkey.png" alt="Monkey" class="h-40 mx-auto">
+                                <img src="{{ url('/images/characters/monkey.png') }}"alt="Monkey" class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="/images/characters/monkey-thinking.png" alt="Thinking Monkey"
+                                <img src="{{ url('/images/characters/monkey-thinking.png') }}"alt="Thinking Monkey"
                                     class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more!</p>
                             </div>
@@ -207,9 +208,9 @@
         </div>
 
         <!-- Sound effects (hidden) -->
-        <audio id="correct-sound" src="/sounds/correct.mp3" preload="auto"></audio>
-        <audio id="incorrect-sound" src="/sounds/incorrect.mp3" preload="auto"></audio>
-        <audio id="complete-sound" src="/sounds/complete.mp3" preload="auto"></audio>
+        <audio id="correct-sound" src="{{ url('/sounds/correct.mp3" preload="auto"></audio>
+        <audio id="incorrect-sound" src="{{ url('/sounds/incorrect.mp3" preload="auto"></audio>
+        <audio id="complete-sound" src="{{ url('/sounds/complete.mp3" preload="auto"></audio>
     </div>
 
     <!-- Alpine.js component for the subtraction game -->
