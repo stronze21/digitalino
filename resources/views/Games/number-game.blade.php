@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Help our animal friends learn their numbers!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="{{ url('/images/characters/owl.png') }}"alt="Teacher Owl" class="h-40">
+                        <img src="/images/characters/owl.png" alt="Teacher Owl" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-blue-50 rounded-xl p-4 mb-6 text-left">
@@ -77,15 +77,13 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
                         <template x-for="(option, index) in currentOptions" :key="index">
                             <div class="relative cursor-pointer transform transition hover:scale-105"
-                                :class="{
-                                    'opacity-50 pointer-events-none': selectedAnswer !== null && selectedAnswer !==
-                                        index
-                                }"
+                                :class="{ 'opacity-50 pointer-events-none': selectedAnswer !== null && selectedAnswer !==
+                                    index }"
                                 @click="checkAnswer(index)">
                                 <div
                                     class="bg-gradient-to-b from-yellow-100 to-yellow-200 rounded-xl shadow-md overflow-hidden p-3">
                                     <div class="flex flex-col items-center p-2">
-                                        <img :src="{ { url('' / images / characters / ' + option.animal + '.png '"
+                                        <img :src="'/images/characters/' + option.animal + '.png'"
                                             class="h-24 object-contain mb-2" :alt="option.animal">
                                         <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center">
                                             <span class="text-2xl font-bold" x-text="option.number"></span>
@@ -96,11 +94,8 @@
                                 <!-- Feedback indicator (right/wrong) -->
                                 <div x-show="selectedAnswer === index"
                                     class="absolute inset-0 flex items-center justify-center rounded-xl"
-                                    :class="{
-                                        'bg-green-300 bg-opacity-30': isAnswerCorrect,
-                                        'bg-red-300 bg-opacity-30': !
-                                            isAnswerCorrect
-                                    }"
+                                    :class="{ 'bg-green-300 bg-opacity-30': isAnswerCorrect, 'bg-red-300 bg-opacity-30': !
+                                            isAnswerCorrect }"
                                     style="display: none;">
                                     <div class="rounded-full p-2"
                                         :class="{ 'bg-green-100': isAnswerCorrect, 'bg-red-100': !isAnswerCorrect }">
@@ -163,23 +158,21 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/panda-happy.png') }}"alt="Happy Panda"
-                                    class="h-40 mx-auto">
+                                <img src="/images/characters/panda-happy.png" alt="Happy Panda" class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/fox-smile.png') }}"alt="Smiling Fox"
-                                    class="h-40 mx-auto">
+                                <img src="/images/characters/fox-smile.png" alt="Smiling Fox" class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good job!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/rabbit-thinking.png') }}"alt="Thinking Rabbit"
+                                <img src="/images/characters/rabbit-thinking.png" alt="Thinking Rabbit"
                                     class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's try again!</p>
                             </div>
@@ -203,9 +196,9 @@
         </div>
 
         <!-- Sound effects (hidden) -->
-        <audio id="correct-sound" src="{{ url('/sounds/correct.mp3" preload="auto"></audio>
-        <audio id="incorrect-sound" src="{{ url('/sounds/incorrect.mp3" preload="auto"></audio>
-        <audio id="complete-sound" src="{{ url('/sounds/complete.mp3" preload="auto"></audio>
+        <audio id="correct-sound" src="/sounds/correct.mp3" preload="auto"></audio>
+        <audio id="incorrect-sound" src="/sounds/incorrect.mp3" preload="auto"></audio>
+        <audio id="complete-sound" src="/sounds/complete.mp3" preload="auto"></audio>
     </div>
 
     <!-- Alpine.js component for the number game -->

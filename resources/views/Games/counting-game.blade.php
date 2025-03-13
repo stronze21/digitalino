@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Help our animal friends count objects!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="{{ url('/images/characters/turtle.png') }}"alt="Teacher Turtle" class="h-40">
+                        <img src="/images/characters/turtle.png" alt="Teacher Turtle" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-green-50 rounded-xl p-4 mb-6 text-left">
@@ -77,7 +77,7 @@
                                 }">
                                 <template x-for="(item, index) in currentItems" :key="index">
                                     <div class="flex justify-center">
-                                        <img :src="{ { url('' / images / counting / ' + item.type + '.png '"
+                                        <img :src="'/images/counting/' + item.type + '.png'"
                                             class="h-12 w-12 object-contain animate-float"
                                             :style="'animation-delay: ' + (index * 0.1) + 's'" :alt="item.type">
                                     </div>
@@ -151,22 +151,21 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/turtle-happy.png') }}"alt="Happy Turtle"
-                                    class="h-40 mx-auto">
+                                <img src="/images/characters/turtle-happy.png" alt="Happy Turtle" class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic counting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/turtle.png') }}"alt="Turtle" class="h-40 mx-auto">
+                                <img src="/images/characters/turtle.png" alt="Turtle" class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good counting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ url('/images/characters/turtle-thinking.png') }}"alt="Thinking Turtle"
+                                <img src="/images/characters/turtle-thinking.png" alt="Thinking Turtle"
                                     class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more!</p>
                             </div>
@@ -190,9 +189,9 @@
         </div>
 
         <!-- Sound effects (hidden) -->
-        <audio id="correct-sound" src="{{ url('/sounds/correct.mp3" preload="auto"></audio>
-        <audio id="incorrect-sound" src="{{ url('/sounds/incorrect.mp3" preload="auto"></audio>
-        <audio id="complete-sound" src="{{ url('/sounds/complete.mp3" preload="auto"></audio>
+        <audio id="correct-sound" src="/sounds/correct.mp3" preload="auto"></audio>
+        <audio id="incorrect-sound" src="/sounds/incorrect.mp3" preload="auto"></audio>
+        <audio id="complete-sound" src="/sounds/complete.mp3" preload="auto"></audio>
     </div>
 
     <!-- Alpine.js component for the counting game -->

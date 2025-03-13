@@ -10,7 +10,7 @@
             <div class="flex items-center">
                 <template x-if="currentProfile">
                     <div class="flex items-center">
-                        <img :src="{ { url('' / images / avatars / ' + currentProfile.avatar + '.png '"
+                        <img :src="'/images/avatars/' + currentProfile.avatar + '.png'"
                             class="w-12 h-12 rounded-full border-2 border-purple-400" :alt="currentProfile.name">
                         <div class="ml-3">
                             <h2 class="font-bold text-gray-800" x-text="currentProfile.name"></h2>
@@ -89,8 +89,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/number-recognition.png') }}" alt="Number Recognition"
-                    class="w-full h-32 object-cover">
+                <img src="/images/games/number-recognition.png" alt="Number Recognition" class="w-full h-32 object-cover">
             </div>
 
             <!-- Counting Game -->
@@ -119,7 +118,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/counting-game.png') }}"alt="Counting Game" class="w-full h-32 object-cover">
+                <img src="/images/games/counting-game.png" alt="Counting Game" class="w-full h-32 object-cover">
             </div>
 
             <!-- Addition Game -->
@@ -148,7 +147,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/addition-game.png') }}"alt="Addition Game" class="w-full h-32 object-cover">
+                <img src="/images/games/addition-game.png" alt="Addition Game" class="w-full h-32 object-cover">
             </div>
 
             <!-- Shapes Recognition -->
@@ -177,7 +176,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/shapes-game.png') }}"alt="Shapes Game" class="w-full h-32 object-cover">
+                <img src="/images/games/shapes-game.png" alt="Shapes Game" class="w-full h-32 object-cover">
             </div>
 
             <!-- Subtraction Game -->
@@ -206,8 +205,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/subtraction-game.png') }}"alt="Subtraction Game"
-                    class="w-full h-32 object-cover">
+                <img src="/images/games/subtraction-game.png" alt="Subtraction Game" class="w-full h-32 object-cover">
             </div>
 
             <!-- Measurement Game -->
@@ -237,7 +235,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ url('/images/games/measurement-game.png') }}"alt="Measurement Game"
+                <img src="/images/games/measurement-game.png" alt="Measurement Game"
                     class="w-full h-32 object-cover opacity-75">
             </div> --}}
         </div>
