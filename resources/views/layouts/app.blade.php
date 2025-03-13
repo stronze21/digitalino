@@ -42,7 +42,7 @@
 
 
                 <!-- Settings button (with PIN protection) -->
-                <button class="p-2 bg-yellow-400 rounded-full shadow-md hover:bg-yellow-300 transition"
+                {{-- <button class="p-2 bg-yellow-400 rounded-full shadow-md hover:bg-yellow-300 transition"
                     data-settings-button>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -51,7 +51,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                </button>
+                </button> --}}
             </div>
         </header>
 
