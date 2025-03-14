@@ -114,7 +114,7 @@
                                             'border-gray-200': newProfileAvatar !== avatar
                                         }"
                                         @click="newProfileAvatar = avatar">
-                                        <img :src="'{{ asset('images/avatars/' + avatar + '.png'') }}" class="w-12 h-12 rounded-full"
+                                        <img :src="'images/avatars/' + avatar + '.png'" class="w-12 h-12 rounded-full"
                                             :alt="'Avatar ' + avatar">
                                     </button>
                                 </template>

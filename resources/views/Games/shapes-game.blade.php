@@ -99,7 +99,7 @@
                                         'opacity-60': selectedAnswer !== null && selectedAnswer !== index
                                     }"
                                     @click="checkAnswer(index)">
-                                    <img :src="'{{ asset('images/shapes/' + option.fileName + '.png'') }}" class="h-20 object-contain"
+                                    <img :src="'images/shapes/' + option.fileName + '.png'" class="h-20 object-contain"
                                         :alt="option.name">
                                 </div>
                             </template>
@@ -179,21 +179,24 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion-happy.png') }}" alt="Happy Lion" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion-happy.png') }}" alt="Happy Lion"
+                                    class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">You're a shape master!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion.png') }}" alt="Lion" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion.png') }}" alt="Lion"
+                                    class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good shape recognition!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion-thinking.png') }}" alt="Thinking Lion" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion-thinking.png') }}" alt="Thinking Lion"
+                                    class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more shapes!</p>
                             </div>
                         </template>
