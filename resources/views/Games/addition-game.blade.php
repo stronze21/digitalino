@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Help our animal friends solve addition problems!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="{{ secure_asset('images/characters/fox.png') }}" alt="Teacher Fox" class="h-40">
+                        <img src="/images/characters/fox.png" alt="Teacher Fox" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-purple-50 rounded-xl p-4 mb-6 text-left">
@@ -90,13 +90,13 @@
                                 <div class="bg-white rounded-xl p-4 shadow-md flex flex-col items-center">
                                     <div class="mb-4 flex justify-center">
                                         <template x-for="i in currentProblem.num1">
-                                            <img src="{{ secure_asset('images/counting/star.png') }}" class="h-8 w-8 mx-1" alt="star">
+                                            <img src="/images/counting/star.png" class="h-8 w-8 mx-1" alt="star">
                                         </template>
                                     </div>
                                     <div class="border-b-2 border-gray-200 w-full mb-4"></div>
                                     <div class="flex justify-center">
                                         <template x-for="i in currentProblem.num2">
-                                            <img src="{{ secure_asset('images/counting/star.png') }}" class="h-8 w-8 mx-1" alt="star">
+                                            <img src="/images/counting/star.png" class="h-8 w-8 mx-1" alt="star">
                                         </template>
                                     </div>
                                 </div>
@@ -169,21 +169,21 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/fox-happy.png') }}" alt="Happy Fox" class="h-40 mx-auto">
+                                <img src="/images/characters/fox-happy.png" alt="Happy Fox" class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic adding!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/fox.png') }}" alt="Fox" class="h-40 mx-auto">
+                                <img src="/images/characters/fox.png" alt="Fox" class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/fox-thinking.png') }}" alt="Thinking Fox" class="h-40 mx-auto">
+                                <img src="/images/characters/fox-thinking.png" alt="Thinking Fox" class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more!</p>
                             </div>
                         </template>

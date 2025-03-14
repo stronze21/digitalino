@@ -17,7 +17,7 @@
 
         <div class="bg-white rounded-2xl shadow-lg p-6">
             <div class="text-center py-12">
-                <img src="{{ secure_asset('images/characters/owl.png') }}" alt="Owl" class="h-32 mx-auto mb-4">
+                <img src="/images/characters/owl.png" alt="Owl" class="h-32 mx-auto mb-4">
                 <h2 class="text-xl font-bold text-gray-800 mb-4">Settings Access</h2>
                 <p class="text-gray-600 mb-6">
                     To access the settings, please click the gear icon in the top right corner of any screen.

@@ -10,7 +10,7 @@
             <div class="flex items-center">
                 <template x-if="currentProfile">
                     <div class="flex items-center">
-                        <img :src="{{ asset('images/avatars/' + currentProfile . avatar + '.png') }}"
+                        <img :src="'/images/avatars/' + currentProfile.avatar + '.png'"
                             class="w-12 h-12 rounded-full border-2 border-purple-400" :alt="currentProfile.name">
                         <div class="ml-3">
                             <h2 class="font-bold text-gray-800" x-text="currentProfile.name"></h2>
@@ -240,7 +240,7 @@
                         </button>
                     </div>
                 </div>
-                <img src="{{ secure_asset('images/games/measurement-game.png') }}" alt="Measurement Game"
+                <img src="/images/games/measurement-game.png" alt="Measurement Game"
                     class="w-full h-32 object-cover opacity-75">
             </div> --}}
         </div>

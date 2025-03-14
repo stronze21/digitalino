@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Learn subtraction with jungle animals!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="{{ secure_asset('images/characters/monkey.png') }}" alt="Teacher Monkey" class="h-40">
+                        <img src="/images/characters/monkey.png" alt="Teacher Monkey" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-pink-50 rounded-xl p-4 mb-6 text-left">
@@ -90,7 +90,7 @@
                                 <div class="bg-white rounded-xl p-4 shadow-md">
                                     <div class="mb-4 flex flex-wrap justify-center">
                                         <template x-for="i in currentProblem.num1">
-                                            <img :src="{{ asset('images/counting/banana.png') }}" class="h-8 w-8 m-1"
+                                            <img :src="'/images/counting/banana.png'" class="h-8 w-8 m-1"
                                                 :class="{ 'opacity-30': i > (currentProblem.num1 - currentProblem.num2) }"
                                                 alt="banana">
                                         </template>

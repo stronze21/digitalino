@@ -28,9 +28,6 @@
         }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script>
-        window.assetUrl = "{{ asset('') }}";
-    </script>
 </head>
 
 <body class="antialiased">
@@ -39,7 +36,7 @@
         <header class="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-md">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="{{ secure_asset('images/logo.png') }}" alt="DIGITALINO Logo" class="h-12 w-auto mr-2">
+                    <img src="/images/logo.png" alt="DIGITALINO Logo" class="h-12 w-auto mr-2">
                     <h1 class="text-2xl font-bold text-white">DIGITALINO</h1>
                 </div>
 
@@ -65,7 +62,7 @@
 
         <!-- Character that follows along all screens -->
         <div class="fixed bottom-4 left-4" x-data="characterHelper()">
-            <img :src="{{ asset('images/characters/' + currentCharacter + '.png') }}"
+            <img :src="'/images/characters/' + currentCharacter + '.png'"
                 class="h-24 w-auto cursor-pointer animate-bounce" @click="giveHint()" alt="Helper Character">
         </div>
 

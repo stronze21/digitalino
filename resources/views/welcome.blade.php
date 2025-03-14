@@ -18,7 +18,7 @@
 
         <!-- Main mascot/logo -->
         <div class="mb-8 relative">
-            <img src="{{ secure_asset('images/mascot.png') }}" alt="DIGITALINO Mascot" class="w-64 h-64 object-contain">
+            <img src="/images/mascot.png" alt="DIGITALINO Mascot" class="w-64 h-64 object-contain">
 
             <!-- Floating animated stars -->
             <div class="absolute -top-4 -right-4 animate-pulse">
@@ -74,7 +74,7 @@
                                         'border-gray-200': selectedProfile !== profile.id
                                     }"
                                     @click="selectProfile(profile.id)">
-                                    <img :src="{{ asset('images/avatars/' + profile . avatar + '.png') }}"
+                                    <img :src="'/images/avatars/' + profile.avatar + '.png'"
                                         class="w-16 h-16 rounded-full mb-2" :alt="profile.name">
                                     <span class="font-medium" x-text="profile.name"></span>
                                     <span class="text-xs text-gray-500"
@@ -114,8 +114,8 @@
                                             'border-gray-200': newProfileAvatar !== avatar
                                         }"
                                         @click="newProfileAvatar = avatar">
-                                        <img :src="{{ asset('images/avatars/' + avatar + '.png') }}"
-                                            class="w-12 h-12 rounded-full" :alt="'Avatar ' + avatar">
+                                        <img :src="'{{ asset('images/avatars/' + avatar + '.png'') }}" class="w-12 h-12 rounded-full"
+                                            :alt="'Avatar ' + avatar">
                                     </button>
                                 </template>
                             </div>

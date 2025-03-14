@@ -42,7 +42,7 @@
                     <p class="text-lg text-gray-600 mb-6">Discover and learn different shapes!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="{{ secure_asset('images/characters/lion.png') }}" alt="Teacher Lion" class="h-40">
+                        <img src="/images/characters/lion.png" alt="Teacher Lion" class="h-40">
                     </div>
 
                     <div class="max-w-md mx-auto bg-orange-50 rounded-xl p-4 mb-6 text-left">
@@ -80,7 +80,7 @@
                         <template x-if="questionType === 'shapeToName'">
                             <div class="flex justify-center">
                                 <div class="bg-orange-100 rounded-2xl p-4 inline-flex items-center">
-                                    <img :src="{{ asset('images/shapes/' + currentShape . fileName + '.png') }}"
+                                    <img :src="'/images/shapes/' + currentShape.fileName + '.png'"
                                         class="h-28 object-contain" :alt="currentShape.name">
                                 </div>
                             </div>
@@ -99,8 +99,8 @@
                                         'opacity-60': selectedAnswer !== null && selectedAnswer !== index
                                     }"
                                     @click="checkAnswer(index)">
-                                    <img :src="{{ asset('images/shapes/' + option . fileName + '.png') }}"
-                                        class="h-20 object-contain" :alt="option.name">
+                                    <img :src="'{{ asset('images/shapes/' + option.fileName + '.png'') }}" class="h-20 object-contain"
+                                        :alt="option.name">
                                 </div>
                             </template>
                         </div>
@@ -179,24 +179,21 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion-happy.png') }}" alt="Happy Lion"
-                                    class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion-happy.png') }}" alt="Happy Lion" class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">You're a shape master!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion.png') }}" alt="Lion"
-                                    class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion.png') }}" alt="Lion" class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good shape recognition!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/lion-thinking.png') }}" alt="Thinking Lion"
-                                    class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/lion-thinking.png') }}" alt="Thinking Lion" class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more shapes!</p>
                             </div>
                         </template>
