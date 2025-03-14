@@ -90,7 +90,7 @@
                                 <div class="bg-white rounded-xl p-4 shadow-md">
                                     <div class="mb-4 flex flex-wrap justify-center">
                                         <template x-for="i in currentProblem.num1">
-                                            <img :src="'{{ asset('images/counting/banana.png'') }}" class="h-8 w-8 m-1"
+                                            <img :src="{{ asset('images/counting/banana.png') }}" class="h-8 w-8 m-1"
                                                 :class="{ 'opacity-30': i > (currentProblem.num1 - currentProblem.num2) }"
                                                 alt="banana">
                                         </template>
@@ -169,22 +169,24 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey-happy.png') }}" alt="Happy Monkey" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/monkey-happy.png') }}" alt="Happy Monkey"
+                                    class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic subtracting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey.png') }}" alt="Monkey" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/monkey.png') }}" alt="Monkey"
+                                    class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey-thinking.png') }}" alt="Thinking Monkey"
-                                    class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/monkey-thinking.png') }}"
+                                    alt="Thinking Monkey" class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's practice more!</p>
                             </div>
                         </template>

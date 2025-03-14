@@ -85,7 +85,7 @@
                                 <div
                                     class="bg-gradient-to-b from-yellow-100 to-yellow-200 rounded-xl shadow-md overflow-hidden p-3">
                                     <div class="flex flex-col items-center p-2">
-                                        <img :src="'{{ asset('images/characters/' + option.animal + '.png'') }}"
+                                        <img :src="{{ asset('images/characters/' + option . animal + '.png') }}"
                                             class="h-24 object-contain mb-2" :alt="option.animal">
                                         <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center">
                                             <span class="text-2xl font-bold" x-text="option.number"></span>
@@ -163,22 +163,24 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/panda-happy.png') }}" alt="Happy Panda" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/panda-happy.png') }}" alt="Happy Panda"
+                                    class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/fox-smile.png') }}" alt="Smiling Fox" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/fox-smile.png') }}" alt="Smiling Fox"
+                                    class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good job!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/rabbit-thinking.png') }}" alt="Thinking Rabbit"
-                                    class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/rabbit-thinking.png') }}"
+                                    alt="Thinking Rabbit" class="h-40 mx-auto">
                                 <p class="text-purple-600 font-medium mt-2">Let's try again!</p>
                             </div>
                         </template>

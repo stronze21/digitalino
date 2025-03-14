@@ -65,7 +65,7 @@
 
         <!-- Character that follows along all screens -->
         <div class="fixed bottom-4 left-4" x-data="characterHelper()">
-            <img :src="'{{ asset('images/characters/' + currentCharacter + '.png'') }}"
+            <img :src="{{ asset('images/characters/' + currentCharacter + '.png') }}"
                 class="h-24 w-auto cursor-pointer animate-bounce" @click="giveHint()" alt="Helper Character">
         </div>
 

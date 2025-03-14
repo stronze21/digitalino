@@ -77,7 +77,7 @@
                                 }">
                                 <template x-for="(item, index) in currentItems" :key="index">
                                     <div class="flex justify-center">
-                                        <img :src="'{{ asset('images/counting/' + item.type + '.png'') }}"
+                                        <img :src="{{ asset('images/counting/' + item . type + '.png') }}"
                                             class="h-12 w-12 object-contain animate-float"
                                             :style="'animation-delay: ' + (index * 0.1) + 's'" :alt="item.type">
                                     </div>
@@ -151,14 +151,16 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/turtle-happy.png') }}" alt="Happy Turtle" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/turtle-happy.png') }}" alt="Happy Turtle"
+                                    class="h-40 mx-auto">
                                 <p class="text-green-600 font-medium mt-2">Fantastic counting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/turtle.png') }}" alt="Turtle" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/turtle.png') }}" alt="Turtle"
+                                    class="h-40 mx-auto">
                                 <p class="text-blue-600 font-medium mt-2">Good counting!</p>
                             </div>
                         </template>
