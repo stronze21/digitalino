@@ -37,15 +37,12 @@ Route::get('/game-hub', function () {
 Route::get('/games/number-recognition', function () {
     return view('games.number-game');
 })->name('games.number');
-
 Route::get('/games/counting-game', function () {
     return view('games.counting-game');
 })->name('games.counting');
-
 Route::get('/games/addition-game', function () {
     return view('games.addition-game');
 })->name('games.addition');
-
 Route::get('/games/shapes-game', function () {
     return view('games.shapes-game');
 })->name('games.shapes');
