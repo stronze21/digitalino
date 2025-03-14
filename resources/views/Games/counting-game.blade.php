@@ -216,7 +216,7 @@
                 difficultyLevel: 1,
 
                 // Object types for counting
-                itemTypes: ['apple', 'banana', 'butterfly', 'car', 'cat', 'dog', 'fish', 'flower', 'star'],
+                itemTypes: ['apple', 'banana', 'butterfly', 'car', 'cat', 'dog', 'fish', 'star'],
 
                 // Initialize the game
                 initGame() {
