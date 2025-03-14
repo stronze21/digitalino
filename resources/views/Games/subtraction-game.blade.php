@@ -353,7 +353,7 @@
 
                     if (this.isAnswerCorrect) {
                         this.correctAnswers++;
-                        this.score += 10;
+                        this.score += 1;
                         document.getElementById('correct-sound').play();
                     } else {
                         document.getElementById('incorrect-sound').play();

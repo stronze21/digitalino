@@ -77,8 +77,10 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
                         <template x-for="(option, index) in currentOptions" :key="index">
                             <div class="relative cursor-pointer transform transition hover:scale-105"
-                                :class="{ 'opacity-50 pointer-events-none': selectedAnswer !== null && selectedAnswer !==
-                                    index }"
+                                :class="{
+                                    'opacity-50 pointer-events-none': selectedAnswer !== null && selectedAnswer !==
+                                        index
+                                }"
                                 @click="checkAnswer(index)">
                                 <div
                                     class="bg-gradient-to-b from-yellow-100 to-yellow-200 rounded-xl shadow-md overflow-hidden p-3">
@@ -94,8 +96,11 @@
                                 <!-- Feedback indicator (right/wrong) -->
                                 <div x-show="selectedAnswer === index"
                                     class="absolute inset-0 flex items-center justify-center rounded-xl"
-                                    :class="{ 'bg-green-300 bg-opacity-30': isAnswerCorrect, 'bg-red-300 bg-opacity-30': !
-                                            isAnswerCorrect }"
+                                    :class="{
+                                        'bg-green-300 bg-opacity-30': isAnswerCorrect,
+                                        'bg-red-300 bg-opacity-30': !
+                                            isAnswerCorrect
+                                    }"
                                     style="display: none;">
                                     <div class="rounded-full p-2"
                                         :class="{ 'bg-green-100': isAnswerCorrect, 'bg-red-100': !isAnswerCorrect }">
@@ -362,7 +367,7 @@
 
                     if (this.isAnswerCorrect) {
                         this.correctAnswers++;
-                        this.score += 10;
+                        this.score += 1;
                         document.getElementById('correct-sound').play();
                     } else {
                         document.getElementById('incorrect-sound').play();
