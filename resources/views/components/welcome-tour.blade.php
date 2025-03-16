@@ -8,14 +8,14 @@
         <!-- Welcome screen -->
         <template x-if="step === 0">
             <div class="text-center">
-                <img src="/images/logo.png" alt="DIGITALINO Logo" class="h-24 mx-auto mb-4">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome to DIGITALINO!</h2>
+                <img src="/images/logo.png" alt="NUMZOO Logo" class="h-24 mx-auto mb-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome to NUMZOO!</h2>
                 <p class="text-gray-600 mb-6">
                     A fun learning adventure for kindergarten mathematics
                 </p>
 
                 <div class="flex flex-col items-center mb-6">
-                    <img src="/images/mascot.png" alt="DIGITALINO Mascot" class="h-32 mb-3">
+                    <img src="/images/mascot.png" alt="NUMZOO Mascot" class="h-32 mb-3">
                     <p class="text-sm text-gray-500 italic">
                         "Hi there! I'm Digi, your learning buddy!"
                     </p>
@@ -138,7 +138,7 @@
                 <div class="flex flex-col items-center mb-6">
                     <img src="/images/characters/panda-happy.png" alt="Happy Panda" class="h-32 mb-3">
                     <p class="text-gray-600 text-center mb-4">
-                        You're ready to start the DIGITALINO math adventure! Let's create a profile and begin exploring
+                        You're ready to start the NUMZOO math adventure! Let's create a profile and begin exploring
                         numbers together.
                     </p>
                 </div>
@@ -160,7 +160,7 @@
             // Initialize component
             init() {
                 // Check if it's the first time
-                const isFirstVisit = !localStorage.getItem('digitalino_initialized');
+                const isFirstVisit = !localStorage.getItem('numzoo_initialized');
 
                 if (isFirstVisit) {
                     this.isVisible = true;
@@ -175,13 +175,13 @@
             // Skip the tour
             skipTour() {
                 this.isVisible = false;
-                localStorage.setItem('digitalino_initialized', 'true');
+                localStorage.setItem('numzoo_initialized', 'true');
             },
 
             // Finish the tour
             finishTour() {
                 this.isVisible = false;
-                localStorage.setItem('digitalino_initialized', 'true');
+                localStorage.setItem('numzoo_initialized', 'true');
             }
         };
     }

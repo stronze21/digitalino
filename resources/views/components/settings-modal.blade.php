@@ -319,7 +319,7 @@
                 this.loadSettings();
 
                 // Load PIN from localStorage
-                const storedPin = localStorage.getItem('digitalino_pin');
+                const storedPin = localStorage.getItem('numzoo_pin');
                 if (storedPin) {
                     this.pin = storedPin;
                 }
@@ -386,7 +386,7 @@
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector(
-                                    'meta[name="csrf-token"]')?.getAttribute(
+                                'meta[name="csrf-token"]')?.getAttribute(
                                 'content') || '',
                             'Accept': 'application/json'
                         },
@@ -419,7 +419,7 @@
 
             // Load settings from localStorage
             loadSettings() {
-                const storedSettings = localStorage.getItem('digitalino_settings');
+                const storedSettings = localStorage.getItem('numzoo_settings');
                 if (storedSettings) {
                     try {
                         const parsedSettings = JSON.parse(storedSettings);
@@ -442,7 +442,7 @@
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector(
-                                    'meta[name="csrf-token"]')?.getAttribute(
+                                'meta[name="csrf-token"]')?.getAttribute(
                                 'content') || '',
                             'Accept': 'application/json'
                         },
@@ -455,7 +455,7 @@
 
                     if (result.success) {
                         // Store in localStorage
-                        localStorage.setItem('digitalino_settings', JSON.stringify(this
+                        localStorage.setItem('numzoo_settings', JSON.stringify(this
                             .settings));
                         this.closeSettings();
 
@@ -466,7 +466,7 @@
                     }
                 } catch (error) {
                     // Fallback to just local storage
-                    localStorage.setItem('digitalino_settings', JSON.stringify(this.settings));
+                    localStorage.setItem('numzoo_settings', JSON.stringify(this.settings));
                     this.closeSettings();
 
                     // Apply settings to the app
@@ -543,7 +543,7 @@
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector(
-                                    'meta[name="csrf-token"]')?.getAttribute(
+                                'meta[name="csrf-token"]')?.getAttribute(
                                 'content') || '',
                             'Accept': 'application/json'
                         }
@@ -553,8 +553,8 @@
 
                     if (result.success) {
                         // Clear all app data from localStorage
-                        localStorage.removeItem('digitalino_profiles');
-                        localStorage.removeItem('digitalino_activity');
+                        localStorage.removeItem('numzoo_profiles');
+                        localStorage.removeItem('numzoo_activity');
 
                         // Keep settings and PIN
 
@@ -566,8 +566,8 @@
                     }
                 } catch (error) {
                     // Fallback to just clearing localStorage
-                    localStorage.removeItem('digitalino_profiles');
-                    localStorage.removeItem('digitalino_activity');
+                    localStorage.removeItem('numzoo_profiles');
+                    localStorage.removeItem('numzoo_activity');
 
                     // Keep settings and PIN
 
@@ -604,7 +604,7 @@
 
                 // Save new PIN
                 this.pin = newPin;
-                localStorage.setItem('digitalino_pin', newPin);
+                localStorage.setItem('numzoo_pin', newPin);
 
                 // Reset form
                 this.showChangePinForm = false;
@@ -631,10 +631,10 @@
                         // Collect all app data
                         const exportData = {
                             profiles: JSON.parse(localStorage.getItem(
-                                'digitalino_profiles') ||
+                                    'numzoo_profiles') ||
                                 '{"list":[],"currentProfile":null}'),
                             activity: JSON.parse(localStorage.getItem(
-                                'digitalino_activity') || '{}'),
+                                'numzoo_activity') || '{}'),
                             settings: this.settings,
                             exportDate: new Date().toISOString()
                         };
@@ -650,7 +650,7 @@
 
                         const downloadLink = document.createElement('a');
                         downloadLink.href = url;
-                        downloadLink.download = 'digitalino_data.json';
+                        downloadLink.download = 'numzoo_data.json';
 
                         // Trigger download
                         document.body.appendChild(downloadLink);
@@ -663,9 +663,9 @@
                 } catch (error) {
                     // Fallback to client-side export
                     const exportData = {
-                        profiles: JSON.parse(localStorage.getItem('digitalino_profiles') ||
+                        profiles: JSON.parse(localStorage.getItem('numzoo_profiles') ||
                             '{"list":[],"currentProfile":null}'),
-                        activity: JSON.parse(localStorage.getItem('digitalino_activity') ||
+                        activity: JSON.parse(localStorage.getItem('numzoo_activity') ||
                             '{}'),
                         settings: this.settings,
                         exportDate: new Date().toISOString()
@@ -682,7 +682,7 @@
 
                     const downloadLink = document.createElement('a');
                     downloadLink.href = url;
-                    downloadLink.download = 'digitalino_data.json';
+                    downloadLink.download = 'numzoo_data.json';
 
                     // Trigger download
                     document.body.appendChild(downloadLink);
@@ -727,11 +727,11 @@
                         const importedData = result.data;
 
                         // Import profiles and activity
-                        localStorage.setItem('digitalino_profiles', JSON.stringify(importedData
+                        localStorage.setItem('numzoo_profiles', JSON.stringify(importedData
                             .profiles));
 
                         if (importedData.activity) {
-                            localStorage.setItem('digitalino_activity', JSON.stringify(
+                            localStorage.setItem('numzoo_activity', JSON.stringify(
                                 importedData.activity));
                         }
 
@@ -742,7 +742,7 @@
                         };
 
                         // Save settings
-                        localStorage.setItem('digitalino_settings', JSON.stringify(this
+                        localStorage.setItem('numzoo_settings', JSON.stringify(this
                             .settings));
 
                         // Close settings and reload page
@@ -766,11 +766,11 @@
                             }
 
                             // Import profiles and activity
-                            localStorage.setItem('digitalino_profiles', JSON.stringify(
+                            localStorage.setItem('numzoo_profiles', JSON.stringify(
                                 importedData.profiles));
 
                             if (importedData.activity) {
-                                localStorage.setItem('digitalino_activity', JSON.stringify(
+                                localStorage.setItem('numzoo_activity', JSON.stringify(
                                     importedData.activity));
                             }
 
@@ -781,7 +781,7 @@
                             };
 
                             // Save settings
-                            localStorage.setItem('digitalino_settings', JSON.stringify(this
+                            localStorage.setItem('numzoo_settings', JSON.stringify(this
                                 .settings));
 
                             // Close settings and reload page

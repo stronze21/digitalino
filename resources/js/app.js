@@ -8,7 +8,7 @@
 window.fs = {
     // Read a file (simulated with localStorage)
     readFile: async function(path, options = {}) {
-        const key = 'digitalino_file_' + path;
+        const key = 'numzoo_file_' + path;
         const data = localStorage.getItem(key);
 
         if (data === null) {
@@ -26,7 +26,7 @@ window.fs = {
 
     // Write a file (simulated with localStorage)
     writeFile: async function(path, data, options = {}) {
-        const key = 'digitalino_file_' + path;
+        const key = 'numzoo_file_' + path;
 
         if (data instanceof Uint8Array) {
             const decoder = new TextDecoder();
@@ -39,13 +39,13 @@ window.fs = {
 
     // Check if a file exists
     exists: function(path) {
-        const key = 'digitalino_file_' + path;
+        const key = 'numzoo_file_' + path;
         return localStorage.getItem(key) !== null;
     },
 
     // Remove a file
     unlink: async function(path) {
-        const key = 'digitalino_file_' + path;
+        const key = 'numzoo_file_' + path;
         localStorage.removeItem(key);
         return true;
     }
@@ -252,7 +252,7 @@ if ('serviceWorker' in navigator) {
 // Global audio controller
 window.playSound = function(sound) {
     // Check if sounds are enabled in settings
-    const settingsStr = localStorage.getItem('digitalino_settings');
+    const settingsStr = localStorage.getItem('numzoo_settings');
     let soundEnabled = true;
 
     if (settingsStr) {
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionTime++;
 
         // Store last activity time
-        localStorage.setItem('digitalino_last_active', Date.now().toString());
+        localStorage.setItem('numzoo_last_active', Date.now().toString());
 
         // Check if it's time for a break
         if (sessionTime >= breakInterval) {
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(incrementSession, 1000);
 
     // Reset timer on page load
-    const lastActive = localStorage.getItem('digitalino_last_active');
+    const lastActive = localStorage.getItem('numzoo_last_active');
     if (lastActive) {
         const elapsed = (Date.now() - parseInt(lastActive)) / 1000;
         if (elapsed > 5 * 60) { // 5 minutes of inactivity

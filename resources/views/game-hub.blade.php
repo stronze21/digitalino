@@ -1,7 +1,7 @@
 <!-- resources/views/game-hub.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Game Hub - DIGITALINO')
+@section('title', 'Game Hub - NUMZOO')
 
 @section('content')
     <div class="py-6" x-data="gameHub()">
@@ -153,36 +153,6 @@
                     class="w-full h-32 object-cover">
             </div>
 
-            <!-- Shapes Recognition -->
-            <div
-                class="game-card bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
-                <div class="p-5">
-                    <h3 class="text-xl font-bold text-white mb-2">Shape Explorer</h3>
-                    <p class="text-orange-100 mb-4">Discover and learn different shapes!</p>
-
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <div class="flex mb-1">
-                                <template x-for="i in getSkillLevel('shapes')">
-                                    <svg class="w-5 h-5 text-yellow-300 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </template>
-                            </div>
-                            <span class="text-xs text-orange-100">Level <span
-                                    x-text="getSkillLevel('shapes')"></span></span>
-                        </div>
-                        <button @click="startGame('shapes-game')"
-                            class="px-4 py-2 bg-white text-orange-600 rounded-lg font-semibold shadow-md hover:bg-orange-50">
-                            Play
-                        </button>
-                    </div>
-                </div>
-                <img src="{{ secure_asset('images/games/shapes-game.png') }}" alt="Shapes Game"
-                    class="w-full h-32 object-cover">
-            </div>
-
             <!-- Subtraction Game -->
             <div
                 class="game-card bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
@@ -255,7 +225,7 @@
 
                 init() {
                     // Load profile data
-                    const storedProfiles = localStorage.getItem('digitalino_profiles');
+                    const storedProfiles = localStorage.getItem('numzoo_profiles');
                     if (storedProfiles) {
                         try {
                             const profileData = JSON.parse(storedProfiles);
@@ -271,7 +241,7 @@
                     }
 
                     // Load streak data
-                    const activityData = localStorage.getItem('digitalino_activity');
+                    const activityData = localStorage.getItem('numzoo_activity');
                     if (activityData) {
                         try {
                             const activity = JSON.parse(activityData);

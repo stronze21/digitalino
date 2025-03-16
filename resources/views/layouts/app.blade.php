@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DIGITALINO: A math learning game for kindergarten students">
-    <title>DIGITALINO - @yield('title', 'Math Adventure')</title>
+    <meta name="description" content="NUMZOO: A math learning game for kindergarten students">
+    <title>NUMZOO - @yield('title', 'Math Adventure')</title>
 
     <!-- Prevent caching for development -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -36,8 +36,8 @@
         <header class="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-md">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="/images/logo.png" alt="DIGITALINO Logo" class="h-12 w-auto mr-2">
-                    <h1 class="text-2xl font-bold text-white">DIGITALINO</h1>
+                    <img src="/images/logo.png" alt="NUMZOO Logo" class="h-12 w-auto mr-2">
+                    <h1 class="text-2xl font-bold text-white">NUMZOO</h1>
                 </div>
 
 

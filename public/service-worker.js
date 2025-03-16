@@ -1,6 +1,6 @@
 // public/service-worker.js
 
-const CACHE_NAME = 'digitalino-v1';
+const CACHE_NAME = 'numzoo-v1';
 
 // Assets to cache for offline use
 const assetsToCache = [
@@ -167,7 +167,7 @@ self.addEventListener('push', event => {
 
     event.waitUntil(
       self.registration.showNotification(
-        data.title || 'DIGITALINO',
+        data.title || 'NUMZOO',
         options
       )
     );

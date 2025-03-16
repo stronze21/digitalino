@@ -1,7 +1,7 @@
 <!-- resources/views/settings.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Settings - DIGITALINO')
+@section('title', 'Settings - NUMZOO')
 
 @section('content')
     <div class="max-w-4xl mx-auto py-6">

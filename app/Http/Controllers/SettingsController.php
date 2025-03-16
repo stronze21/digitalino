@@ -108,7 +108,7 @@ class SettingsController extends Controller
             try {
                 $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-                // Basic validation that this is DIGITALINO data
+                // Basic validation that this is NUMZOO data
                 if (!isset($data['profiles']) || !isset($data['settings'])) {
                     return response()->json([
                         'success' => false,

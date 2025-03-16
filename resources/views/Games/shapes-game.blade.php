@@ -1,7 +1,7 @@
 <!-- resources/views/games/shapes-game.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Shape Explorer - DIGITALINO')
+@section('title', 'Shape Explorer - NUMZOO')
 
 @section('content')
     <div class="py-4 relative" x-data="shapesGame()" x-init="initGame()">
@@ -335,7 +335,7 @@
                 // Initialize the game
                 initGame() {
                     // Load difficulty level from profile if available
-                    const storedProfiles = localStorage.getItem('digitalino_profiles');
+                    const storedProfiles = localStorage.getItem('numzoo_profiles');
                     if (storedProfiles) {
                         try {
                             const profileData = JSON.parse(storedProfiles);
@@ -518,20 +518,20 @@
                     const starsEarned = Math.ceil(this.scorePercentage / 20); // 0-5 stars based on percentage
 
                     // Get storage data
-                    const activityData = localStorage.getItem('digitalino_activity');
+                    const activityData = localStorage.getItem('numzoo_activity');
                     if (activityData) {
                         try {
                             const activity = JSON.parse(activityData);
                             activity.lastPlayedGame = gameId;
                             activity.lastPlayTime = new Date().toISOString();
-                            localStorage.setItem('digitalino_activity', JSON.stringify(activity));
+                            localStorage.setItem('numzoo_activity', JSON.stringify(activity));
                         } catch (e) {
                             console.error('Failed to update activity:', e);
                         }
                     }
 
                     // Update profile progress
-                    const storedProfiles = localStorage.getItem('digitalino_profiles');
+                    const storedProfiles = localStorage.getItem('numzoo_profiles');
                     if (storedProfiles) {
                         try {
                             const profileData = JSON.parse(storedProfiles);
@@ -562,7 +562,7 @@
 
                                     // Save updated profile
                                     profileData.list[profileIndex] = profile;
-                                    localStorage.setItem('digitalino_profiles', JSON.stringify(profileData));
+                                    localStorage.setItem('numzoo_profiles', JSON.stringify(profileData));
                                 }
                             }
                         } catch (e) {

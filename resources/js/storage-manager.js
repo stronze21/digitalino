@@ -3,7 +3,7 @@
 import { persist } from '@alpinejs/persist'
 
 /**
- * Storage Manager for DIGITALINO
+ * Storage Manager for NUMZOO
  * Handles all local storage operations for the stateless application
  */
 export default function initStorageManager() {
@@ -20,13 +20,13 @@ export default function initStorageManager() {
                 subtraction: 1,
                 shapes: 1
             }
-        }).as('digitalino_progress'),
+        }).as('numzoo_progress'),
 
         // Game profiles for multiple users on same device
         profiles: persist({
             currentProfile: null,
             list: []
-        }).as('digitalino_profiles'),
+        }).as('numzoo_profiles'),
 
         // Game settings
         settings: persist({
@@ -37,7 +37,7 @@ export default function initStorageManager() {
             language: 'en',
             difficultyAdjustment: 'auto',
             characterName: 'Digi'
-        }).as('digitalino_settings'),
+        }).as('numzoo_settings'),
 
         // Recent activity tracking
         recentActivity: persist({
@@ -46,16 +46,16 @@ export default function initStorageManager() {
             sessionDuration: 0,
             dailyStreak: 0,
             lastActiveDate: null
-        }).as('digitalino_activity'),
+        }).as('numzoo_activity'),
 
         /**
          * Initialize storage
          */
         init() {
             // Check if it's the first time launching the app
-            if (!localStorage.getItem('digitalino_initialized')) {
+            if (!localStorage.getItem('numzoo_initialized')) {
                 this.resetToDefaults();
-                localStorage.setItem('digitalino_initialized', 'true');
+                localStorage.setItem('numzoo_initialized', 'true');
             }
 
             // Update daily streak

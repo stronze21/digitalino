@@ -1,14 +1,14 @@
 <!-- resources/views/about.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'About DIGITALINO')
+@section('title', 'About NUMZOO')
 
 @section('content')
     <div class="py-8">
         <div class="max-w-4xl mx-auto">
             <!-- Header section -->
             <div class="text-center mb-10">
-                <h1 class="text-3xl md:text-4xl font-bold text-green-600 mb-4">About DIGITALINO</h1>
+                <h1 class="text-3xl md:text-4xl font-bold text-green-600 mb-4">About NUMZOO</h1>
                 <p class="text-lg text-gray-600">A fun math learning adventure for kindergarten students</p>
             </div>
 
@@ -16,13 +16,12 @@
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
                 <div class="md:flex">
                     <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-blue-500 p-6 flex items-center justify-center">
-                        <img src="{{ url('') }}/images/mascot.png" alt="DIGITALINO Mascot"
-                            class="w-48 h-48 object-contain">
+                        <img src="{{ url('') }}/images/mascot.png" alt="NUMZOO Mascot" class="w-48 h-48 object-contain">
                     </div>
                     <div class="md:w-2/3 p-6 md:p-8">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
                         <p class="text-gray-700 mb-4">
-                            DIGITALINO is designed to make learning mathematics fun and engaging for kindergarten learners.
+                            NUMZOO is designed to make learning mathematics fun and engaging for kindergarten learners.
                             Through interactive games featuring colorful animal characters, we aim to help young children
                             develop strong foundational math skills in an enjoyable way.
                         </p>
@@ -167,7 +166,7 @@
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Our Team</h2>
 
                 <p class="text-gray-700 mb-6">
-                    DIGITALINO was developed by a team of Computer Science students from Northwestern University in Laoag
+                    NUMZOO was developed by a team of Computer Science students from Northwestern University in Laoag
                     City, Ilocos Norte:
                 </p>
 

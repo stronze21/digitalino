@@ -1,7 +1,7 @@
 <!-- resources/views/welcome.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Welcome to DIGITALINO')
+@section('title', 'Welcome to NUMZOO')
 
 @section('content')
     <div class="flex flex-col items-center justify-center min-h-[70vh] py-10" x-data="{ showProfileSelector: false }">
@@ -9,7 +9,7 @@
         <!-- Welcome animation -->
         <div class="mb-8 text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 text-purple-600 animate-bounce">
-                Welcome to DIGITALINO!
+                Welcome to NUMZOO!
             </h1>
             <p class="text-lg text-gray-700 max-w-lg mx-auto">
                 A fun math adventure for kindergarten learners!
@@ -18,7 +18,7 @@
 
         <!-- Main mascot/logo -->
         <div class="mb-8 relative">
-            <img src="/images/mascot.png" alt="DIGITALINO Mascot" class="w-64 h-64 object-contain">
+            <img src="/images/mascot.png" alt="NUMZOO Mascot" class="w-64 h-64 object-contain">
 
             <!-- Floating animated stars -->
             <div class="absolute -top-4 -right-4 animate-pulse">
@@ -37,15 +37,25 @@
 
         <!-- Call to action buttons -->
         <div class="space-y-4">
-            <button @click="showProfileSelector = true"
-                class="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white text-xl rounded-full shadow-lg transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
-                Let's Play!
-            </button>
 
-            <button onclick="location.href='{{ route('about') }}'"
-                class="px-6 py-3 bg-blue-100 text-blue-700 rounded-full shadow-md transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-200">
-                About DIGITALINO
-            </button>
+            <!-- Auto-creation component that works with the main profile selector -->
+            <div x-data="{
+                autoCreate() {
+                    // We'll use a custom event to communicate with the main component
+                    const event = new CustomEvent('auto-create-profile');
+                    document.dispatchEvent(event);
+                }
+            }">
+                <button @click="autoCreate()"
+                    class="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white text-xl rounded-full shadow-lg transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+                    Let's Play!
+                </button>
+
+                <button onclick="location.href='{{ route('about') }}'"
+                    class="px-6 py-3 bg-blue-100 text-blue-700 rounded-full shadow-md transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-200">
+                    About NUMZOO
+                </button>
+            </div>
         </div>
 
         <!-- Profile selector modal -->
@@ -156,7 +166,7 @@
         </div>
     </div>
 
-    <!-- Alpine.js component for profile selection -->
+    <!-- Alpine.js component for profile selection with auto-creation -->
     <script>
         function profileSelector() {
             return {
@@ -166,7 +176,7 @@
                 showNewProfileForm: false,
 
                 // New profile form
-                newProfileName: '',
+                newProfileName: 'Numzoologist',
                 newProfileAvatar: 'fox',
                 avatars: ['fox', 'panda', 'owl', 'rabbit', 'turtle', 'penguin', 'lion', 'monkey'],
 
@@ -178,7 +188,7 @@
                 // Initialize component
                 init() {
                     // Load profiles from local storage
-                    const storedProfiles = localStorage.getItem('digitalino_profiles');
+                    const storedProfiles = localStorage.getItem('numzoo_profiles');
                     if (storedProfiles) {
                         try {
                             const profileData = JSON.parse(storedProfiles);
@@ -190,6 +200,45 @@
                             console.error('Failed to parse profiles:', e);
                         }
                     }
+
+                    // Listen for auto-create event
+                    document.addEventListener('auto-create-profile', () => {
+                        if (this.profiles.length === 0) {
+                            this.autoCreateProfileAndRedirect();
+                        } else {
+                            window.location.href = '/game-hub';
+                        }
+                    });
+                },
+
+                // Automatically create a profile and redirect to game hub
+                autoCreateProfileAndRedirect() {
+                    const newProfile = {
+                        id: Date.now().toString(),
+                        name: this.newProfileName.trim(),
+                        avatar: this.newProfileAvatar,
+                        createdAt: new Date().toISOString(),
+                        progress: {
+                            currentLevel: 1,
+                            totalStars: 0,
+                            completedGames: [],
+                            skillLevels: {
+                                counting: 1,
+                                numbers: 1,
+                                addition: 1,
+                                subtraction: 1,
+                                shapes: 1
+                            }
+                        }
+                    };
+
+                    this.profiles.push(newProfile);
+                    this.selectProfile(newProfile.id);
+
+                    // Redirect to game hub
+                    setTimeout(() => {
+                        window.location.href = '/game-hub';
+                    }, 500); // Small delay to ensure data is saved
                 },
 
                 // Select an existing profile
@@ -202,7 +251,7 @@
                         list: this.profiles
                     };
 
-                    localStorage.setItem('digitalino_profiles', JSON.stringify(profileData));
+                    localStorage.setItem('numzoo_profiles', JSON.stringify(profileData));
                 },
 
                 // Create a new profile
@@ -252,7 +301,7 @@
                             list: this.profiles
                         };
 
-                        localStorage.setItem('digitalino_profiles', JSON.stringify(profileData));
+                        localStorage.setItem('numzoo_profiles', JSON.stringify(profileData));
                     }
                 },
 
