@@ -59,20 +59,18 @@
             <!-- Add this button with its own Alpine.js component -->
             <div class="text-center my-6" x-data="{
                 clearAllCaches() {
-                    if (confirm('Are you sure you want to clear all caches? This will reset all game data and profiles.')) {
-                        // Clear localStorage
-                        localStorage.clear();
+                    // Clear localStorage
+                    localStorage.clear();
 
-                        // Call Android method if in WebView
-                        if (typeof AndroidApp !== 'undefined') {
-                            // Use the AndroidApp interface we defined in Kotlin
-                            AndroidApp.clearCache();
-                            // No need to reload - our Kotlin code will handle that
-                        } else {
-                            // Fallback for regular browser
-                            alert('All caches cleared! The page will now reload.');
-                            window.location.reload();
-                        }
+                    // Call Android method if in WebView
+                    if (typeof AndroidApp !== 'undefined') {
+                        // Use the AndroidApp interface we defined in Kotlin
+                        AndroidApp.clearCache();
+                        // No need to reload - our Kotlin code will handle that
+                    } else {
+                        // Fallback for regular browser
+                        alert('All caches cleared! The page will now reload.');
+                        window.location.reload();
                     }
                 }
             }">
