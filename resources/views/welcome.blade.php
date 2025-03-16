@@ -60,14 +60,19 @@
             <div class="text-center my-6" x-data="{
                 clearAllCaches() {
                     if (confirm('Are you sure you want to clear all caches? This will reset all game data and profiles.')) {
-                        // Clear all localStorage items
+                        // Clear localStorage
                         localStorage.clear();
 
-                        // Show confirmation
-                        alert('All caches cleared successfully! The page will now reload.');
-
-                        // Reload the page to reset the UI
-                        window.location.reload();
+                        // Call Android method if in WebView
+                        if (typeof AndroidApp !== 'undefined') {
+                            // Use the AndroidApp interface we defined in Kotlin
+                            AndroidApp.clearCache();
+                            // No need to reload - our Kotlin code will handle that
+                        } else {
+                            // Fallback for regular browser
+                            alert('All caches cleared! The page will now reload.');
+                            window.location.reload();
+                        }
                     }
                 }
             }">
@@ -188,6 +193,24 @@
 
     <!-- Alpine.js component for profile selection with auto-creation -->
     <script>
+        function clearAllCaches() {
+            if (confirm('Are you sure you want to clear all caches? This will reset all game data and profiles.')) {
+                // Clear localStorage
+                localStorage.clear();
+
+                // Call Android method if in WebView
+                if (typeof AndroidApp !== 'undefined') {
+                    // Use the AndroidApp interface we defined in Kotlin
+                    AndroidApp.clearCache();
+                    // No need to reload - our Kotlin code will handle that
+                } else {
+                    // Fallback for regular browser
+                    alert('All caches cleared! The page will now reload.');
+                    window.location.reload();
+                }
+            }
+        }
+
         function profileSelector() {
             return {
                 // Profile data
