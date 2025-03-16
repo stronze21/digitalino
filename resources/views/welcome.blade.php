@@ -69,7 +69,6 @@
                         // No need to reload - our Kotlin code will handle that
                     } else {
                         // Fallback for regular browser
-                        alert('All caches cleared! The page will now reload.');
                         window.location.reload();
                     }
                 }
