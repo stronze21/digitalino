@@ -22,3 +22,8 @@ yarn-error.log
 /.vscode
 /.zed
 .DS_Store
+public/.DS_Store
+app/.DS_Store
+resources/.DS_Store
+resources/views/.DS_Store
+storage/.DS_Store
