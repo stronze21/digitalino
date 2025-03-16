@@ -1,10 +1,10 @@
-<!-- resources/views/games/addition-game.blade.php -->
+<!-- resources/views/games/subtraction-game.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Animal Addition - NUMZOO')
+@section('title', 'Subtraction Safari - NUMZOO')
 
 @section('content')
-    <div class="relative py-4" x-data="additionGame()" x-init="initGame()">
+    <div class="relative py-4" x-data="subtractionGame()" x-init="initGame()">
         <!-- Game header -->
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center">
@@ -14,13 +14,13 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <h1 class="text-2xl font-bold text-purple-600">Animal Addition</h1>
+                <h1 class="text-2xl font-bold text-pink-600">Subtraction Safari</h1>
             </div>
 
             <!-- Progress and score -->
             <div class="flex items-center">
-                <div class="w-32 h-4 mr-3 overflow-hidden bg-purple-100 rounded-full">
-                    <div class="h-full transition-all duration-300 ease-out bg-purple-500"
+                <div class="w-32 h-4 mr-3 overflow-hidden bg-pink-100 rounded-full">
+                    <div class="h-full transition-all duration-300 ease-out bg-pink-500"
                         :style="'width: ' + (currentQuestion / totalQuestions * 100) + '%'"></div>
                 </div>
                 <div class="flex items-center px-3 py-1 bg-yellow-100 rounded-full">
@@ -38,25 +38,24 @@
             <!-- Game instructions -->
             <template x-if="gameState === 'intro'">
                 <div class="py-6 text-center">
-                    <h2 class="mb-4 text-2xl font-bold text-gray-800">Welcome to Animal Addition!</h2>
-                    <p class="mb-6 text-lg text-gray-600">Count the animals to solve addition problems!</p>
+                    <h2 class="mb-4 text-2xl font-bold text-gray-800">Welcome to Subtraction Safari!</h2>
+                    <p class="mb-6 text-lg text-gray-600">Learn subtraction with jungle animals!</p>
 
                     <div class="flex justify-center mb-8">
-                        <img src="/images/characters/fox.png" alt="Teacher Fox" class="h-40">
+                        <img src="/images/characters/monkey.png" alt="Teacher Monkey" class="h-40">
                     </div>
 
-                    <div class="max-w-md p-4 mx-auto mb-6 text-left bg-purple-50 rounded-xl">
-                        <p class="mb-2 text-purple-800">In this game, you will:</p>
-                        <ul class="space-y-2 text-purple-700 list-disc list-inside">
-                            <li>Count different animal groups</li>
-                            <li>Add up the total number of animals</li>
+                    <div class="max-w-md p-4 mx-auto mb-6 text-left bg-pink-50 rounded-xl">
+                        <p class="mb-2 text-pink-800">In this game, you will:</p>
+                        <ul class="space-y-2 text-pink-700 list-disc list-inside">
+                            <li>See a subtraction problem</li>
                             <li>Choose the correct answer</li>
                             <li>Earn stars for correct answers</li>
                         </ul>
                     </div>
 
                     <button @click="startGame()"
-                        class="px-8 py-3 text-lg text-white transition transform bg-purple-500 rounded-full shadow-md hover:bg-purple-600 hover:scale-105">
+                        class="px-8 py-3 text-lg text-white transition transform bg-pink-500 rounded-full shadow-md hover:bg-pink-600 hover:scale-105">
                         Let's Start!
                     </button>
                 </div>
@@ -67,41 +66,42 @@
                 <div>
                     <!-- Question display -->
                     <div class="mb-8 text-center">
-                        <h2 class="mb-4 text-xl text-gray-700">How many animals are there in total?</h2>
+                        <h2 class="mb-4 text-xl text-gray-700">What is the difference?</h2>
 
-                        <!-- Visual representation of animals -->
-                        <div class="flex flex-col items-center justify-center p-6 mx-auto mb-6 bg-purple-100 rounded-2xl"
-                            style="max-width: 500px;">
-                            <!-- First group of animals -->
-                            <div class="flex flex-wrap justify-center p-4 mb-6 bg-white rounded-lg">
-                                <template x-for="i in currentProblem.num1">
-                                    <img :src="'/images/characters/' + currentProblem.animalType1 + '.png'"
-                                        class="w-12 h-12 m-1" :alt="currentProblem.animalType1">
-                                </template>
-                            </div>
-
-                            <!-- Plus sign -->
-                            <div
-                                class="flex items-center justify-center w-12 h-12 mb-6 font-bold text-white bg-purple-500 rounded-full">
-                                <span class="text-2xl">+</span>
-                            </div>
-
-                            <!-- Second group of animals -->
-                            <div class="flex flex-wrap justify-center p-4 bg-white rounded-lg">
-                                <template x-for="i in currentProblem.num2">
-                                    <img :src="'/images/characters/' + currentProblem.animalType2 + '.png'"
-                                        class="w-12 h-12 m-1" :alt="currentProblem.animalType2">
-                                </template>
-                            </div>
-
-                            <!-- Equals sign and question mark -->
-                            <div class="flex items-center mt-6">
-                                <span class="mx-4 text-3xl font-bold text-purple-600">=</span>
-                                <div
-                                    class="flex items-center justify-center w-12 h-12 text-2xl font-bold text-gray-500 bg-white border-2 border-purple-300 border-dashed rounded-lg">
-                                    ?</div>
+                        <div class="flex items-center justify-center">
+                            <div class="inline-flex items-center p-6 text-4xl font-bold bg-pink-100 rounded-2xl">
+                                <div class="p-4 mr-4 bg-white rounded-lg shadow-md">
+                                    <span class="text-pink-600" x-text="currentProblem.num1"></span>
+                                </div>
+                                <div class="mr-4 text-pink-600">−</div>
+                                <div class="p-4 mr-4 bg-white rounded-lg shadow-md">
+                                    <span class="text-pink-600" x-text="currentProblem.num2"></span>
+                                </div>
+                                <div class="mr-4 text-pink-600">=</div>
+                                <div class="p-4 bg-white border-2 border-pink-300 border-dashed rounded-lg shadow-md">
+                                    <span class="text-gray-400">?</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Visual representation (for level 1) -->
+                        <template x-if="difficultyLevel === 1">
+                            <div class="flex justify-center mt-6">
+                                <div class="p-4 bg-white shadow-md rounded-xl">
+                                    <div class="flex flex-wrap justify-center mb-4">
+                                        <template x-for="i in currentProblem.num1">
+                                            <img :src="'/images/characters/monkey.png'" class="w-8 h-8 m-1"
+                                                :class="{ 'opacity-30': i > (currentProblem.num1 - currentProblem.num2) }"
+                                                alt="monkey">
+                                        </template>
+                                    </div>
+                                    <p class="mt-2 text-sm text-gray-600">
+                                        <span x-text="currentProblem.num1"></span> monkeys -
+                                        <span x-text="currentProblem.num2"></span> monkeys = ?
+                                    </p>
+                                </div>
+                            </div>
+                        </template>
                     </div>
 
                     <!-- Answer options -->
@@ -132,11 +132,11 @@
                             :class="{ 'text-green-600': isAnswerCorrect, 'text-red-600': !isAnswerCorrect }">
                             <span x-show="isAnswerCorrect">Great job! That's correct!</span>
                             <span x-show="!isAnswerCorrect">Oops! The correct answer was <span
-                                    x-text="currentProblem.num1 + currentProblem.num2"></span></span>
+                                    x-text="currentProblem.num1 - currentProblem.num2"></span></span>
                         </p>
 
                         <button @click="nextQuestion()"
-                            class="px-6 py-2 text-white bg-purple-500 rounded-full shadow-md hover:bg-purple-600">
+                            class="px-6 py-2 text-white bg-pink-500 rounded-full shadow-md hover:bg-pink-600">
                             <span x-text="currentQuestion < totalQuestions ? 'Next Question' : 'See Results'"></span>
                         </button>
                     </div>
@@ -147,7 +147,7 @@
             <template x-if="gameState === 'results'">
                 <div class="py-6 text-center">
                     <h2 class="mb-2 text-2xl font-bold text-gray-800">Great Job!</h2>
-                    <p class="mb-8 text-lg text-gray-600">You completed the animal addition challenge!</p>
+                    <p class="mb-8 text-lg text-gray-600">You completed the subtraction challenge!</p>
 
                     <!-- Score display -->
                     <div class="flex justify-center mb-6">
@@ -169,21 +169,24 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="/images/characters/fox-smile.png" alt="Happy Fox" class="h-40 mx-auto">
-                                <p class="mt-2 font-medium text-green-600">Fantastic adding!</p>
+                                <img src="{{ secure_asset('images/characters/monkey-happy.png') }}" alt="Happy Monkey"
+                                    class="h-40 mx-auto">
+                                <p class="mt-2 font-medium text-green-600">Fantastic subtracting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="/images/characters/fox.png" alt="Fox" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/monkey.png') }}" alt="Monkey"
+                                    class="h-40 mx-auto">
                                 <p class="mt-2 font-medium text-blue-600">Good work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="/images/characters/fox.png" alt="Thinking Fox" class="h-40 mx-auto">
+                                <img src="{{ secure_asset('images/characters/monkey-thinking.png') }}"
+                                    alt="Thinking Monkey" class="h-40 mx-auto">
                                 <p class="mt-2 font-medium text-purple-600">Let's practice more!</p>
                             </div>
                         </template>
@@ -192,7 +195,7 @@
                     <!-- Action buttons -->
                     <div class="flex justify-center space-x-4">
                         <button @click="resetGame()"
-                            class="px-6 py-3 text-white bg-purple-500 rounded-full shadow-md hover:bg-purple-600">
+                            class="px-6 py-3 text-white bg-pink-500 rounded-full shadow-md hover:bg-pink-600">
                             Play Again
                         </button>
 
@@ -211,9 +214,9 @@
         <audio id="complete-sound" src="/sounds/complete.mp3" preload="auto"></audio>
     </div>
 
-    <!-- Alpine.js component for the addition game -->
+    <!-- Alpine.js component for the subtraction game -->
     <script>
-        function additionGame() {
+        function subtractionGame() {
             return {
                 // Game state
                 gameState: 'intro', // 'intro', 'playing', 'results'
@@ -221,16 +224,11 @@
                 totalQuestions: 10,
                 currentProblem: {
                     num1: 0,
-                    num2: 0,
-                    animalType1: 'panda',
-                    animalType2: 'panda'
+                    num2: 0
                 },
                 answerOptions: [],
                 selectedAnswer: null,
                 isAnswerCorrect: false,
-
-                // Available animal types based on assets
-                animalTypes: ['panda', 'cat', 'dog', 'fish', 'fox', 'lion', 'monkey', 'owl', 'rabbit', 'turtle'],
 
                 // Score tracking
                 score: 0,
@@ -250,8 +248,8 @@
                             if (profileData && profileData.currentProfile) {
                                 const profile = profileData.list.find(p => p.id === profileData.currentProfile);
                                 if (profile && profile.progress && profile.progress.skillLevels && profile.progress
-                                    .skillLevels.addition) {
-                                    this.difficultyLevel = profile.progress.skillLevels.addition;
+                                    .skillLevels.subtraction) {
+                                    this.difficultyLevel = profile.progress.skillLevels.subtraction;
                                 }
                             }
                         } catch (e) {
@@ -270,81 +268,72 @@
                     this.generateQuestion();
                 },
 
-                // Generate a new addition problem
+                // Generate a new subtraction problem
                 generateQuestion() {
                     // Define number range based on difficulty
-                    let max1 = 3;
-                    let max2 = 3;
+                    let maxNum1 = 5;
+                    let maxNum2 = 5;
 
                     switch (this.difficultyLevel) {
                         case 1:
-                            max1 = 3;
-                            max2 = 3;
+                            maxNum1 = 5;
+                            maxNum2 = 5;
                             break;
                         case 2:
-                            max1 = 5;
-                            max2 = 5;
+                            maxNum1 = 10;
+                            maxNum2 = 10;
                             break;
                         case 3:
-                            max1 = 7;
-                            max2 = 5;
+                            maxNum1 = 20;
+                            maxNum2 = 10;
                             break;
                         case 4:
-                            max1 = 9;
-                            max2 = 9;
+                            maxNum1 = 20;
+                            maxNum2 = 20;
                             break;
                         default:
-                            max1 = 3;
-                            max2 = 3;
+                            maxNum1 = 5;
+                            maxNum2 = 5;
                     }
 
-                    // Generate random numbers for the problem
-                    const num1 = Math.floor(Math.random() * max1) + 1;
-                    const num2 = Math.floor(Math.random() * max2) + 1;
+                    // Generate random numbers for the problem (ensure result is not negative)
+                    let num1 = Math.floor(Math.random() * maxNum1) + 1;
+                    let num2 = Math.floor(Math.random() * Math.min(num1, maxNum2)) + 1;
 
-                    // Select random animals for each group
-                    const animalIndex1 = Math.floor(Math.random() * this.animalTypes.length);
-                    let animalIndex2 = animalIndex1;
-
-                    // For higher difficulty levels, sometimes use different animals for variety
-                    if (this.difficultyLevel > 1 && Math.random() > 0.5) {
-                        animalIndex2 = Math.floor(Math.random() * this.animalTypes.length);
-                        while (animalIndex2 === animalIndex1) {
-                            animalIndex2 = Math.floor(Math.random() * this.animalTypes.length);
-                        }
+                    // Ensure num1 is always greater than or equal to num2
+                    if (num1 < num2) {
+                        [num1, num2] = [num2, num1];
                     }
 
                     this.currentProblem = {
                         num1,
-                        num2,
-                        animalType1: this.animalTypes[animalIndex1],
-                        animalType2: this.animalTypes[animalIndex2]
+                        num2
                     };
 
                     // Generate answer options
-                    this.generateAnswerOptions(num1 + num2);
+                    this.generateAnswerOptions(num1 - num2);
                 },
 
                 // Generate answer options for the current problem
-                generateAnswerOptions(correctSum) {
-                    const options = [correctSum];
+                generateAnswerOptions(correctDifference) {
+                    const options = [correctDifference];
 
                     // Add distractors
                     while (options.length < 4) {
-                        // Generate a distractor that's close to the correct sum
+                        // Generate a distractor that's close to the correct difference
                         let distractor;
 
                         // For level 1, make distractors more distinct
                         if (this.difficultyLevel === 1) {
-                            distractor = Math.floor(Math.random() * 8) + 1; // 1-8
+                            distractor = Math.floor(Math.random() * 5); // 0-4
                         } else {
-                            // Generate distractors within ±3 of the correct sum, but ensure they're unique
-                            const offset = Math.floor(Math.random() * 5) - 2; // -2 to +2
-                            distractor = Math.max(1, correctSum + offset);
+                            // Generate distractors within ±3 of the correct difference, but ensure they're unique
+                            const offset = Math.floor(Math.random() * 7) - 3; // -3 to +3
+                            distractor = Math.max(0, correctDifference + offset);
                         }
 
-                        // Ensure distractor is unique and not the correct sum
-                        if (distractor !== correctSum && !options.includes(distractor)) {
+                        // Ensure distractor is unique and not the correct difference
+                        if (distractor !== correctDifference && !options.includes(distractor)) {
                             options.push(distractor);
                         }
                     }
@@ -359,10 +348,10 @@
                     if (this.selectedAnswer !== null) return; // Already answered
 
                     this.selectedAnswer = index;
-                    const selectedSum = this.answerOptions[index];
-                    const correctSum = this.currentProblem.num1 + this.currentProblem.num2;
+                    const selectedDifference = this.answerOptions[index];
+                    const correctDifference = this.currentProblem.num1 - this.currentProblem.num2;
 
-                    this.isAnswerCorrect = selectedSum === correctSum;
+                    this.isAnswerCorrect = selectedDifference === correctDifference;
 
                     if (this.isAnswerCorrect) {
                         this.correctAnswers++;
@@ -397,22 +386,9 @@
                     window.location.href = '/game-hub';
                 },
 
-                // Generate the answer option class based on state
-                getAnswerClass(index) {
-                    if (this.selectedAnswer === null) {
-                        return 'border-gray-200';
-                    } else if (this.selectedAnswer === index && this.isAnswerCorrect) {
-                        return 'border-green-500 bg-green-50';
-                    } else if (this.selectedAnswer === index && !this.isAnswerCorrect) {
-                        return 'border-red-500 bg-red-50';
-                    } else {
-                        return 'opacity-60';
-                    }
-                },
-
                 // Save progress to local storage
                 saveProgress() {
-                    const gameId = 'addition-game';
+                    const gameId = 'subtraction-game';
                     const starsEarned = Math.ceil(this.scorePercentage / 20); // 0-5 stars based on percentage
 
                     // Get storage data
@@ -448,8 +424,8 @@
 
                                     // Update skill level if score is high enough
                                     if (this.scorePercentage >= 70 && this.difficultyLevel === profile.progress.skillLevels
-                                        .addition) {
-                                        profile.progress.skillLevels.addition += 1;
+                                        .subtraction) {
+                                        profile.progress.skillLevels.subtraction += 1;
                                     }
 
                                     // Calculate new overall level

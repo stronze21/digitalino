@@ -1,7 +1,7 @@
 <!-- resources/views/games/subtraction-game.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Subtraction Safari - NUMZOO')
+@section('title', 'Animal Subtraction - NUMZOO')
 
 @section('content')
     <div class="relative py-4" x-data="subtractionGame()" x-init="initGame()">
@@ -14,7 +14,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <h1 class="text-2xl font-bold text-pink-600">Subtraction Safari</h1>
+                <h1 class="text-2xl font-bold text-pink-600">Animal Subtraction</h1>
             </div>
 
             <!-- Progress and score -->
@@ -38,8 +38,8 @@
             <!-- Game instructions -->
             <template x-if="gameState === 'intro'">
                 <div class="py-6 text-center">
-                    <h2 class="mb-4 text-2xl font-bold text-gray-800">Welcome to Subtraction Safari!</h2>
-                    <p class="mb-6 text-lg text-gray-600">Learn subtraction with jungle animals!</p>
+                    <h2 class="mb-4 text-2xl font-bold text-gray-800">Welcome to Animal Subtraction!</h2>
+                    <p class="mb-6 text-lg text-gray-600">How many animals are left after some go away?</p>
 
                     <div class="flex justify-center mb-8">
                         <img src="/images/characters/monkey.png" alt="Teacher Monkey" class="h-40">
@@ -48,8 +48,9 @@
                     <div class="max-w-md p-4 mx-auto mb-6 text-left bg-pink-50 rounded-xl">
                         <p class="mb-2 text-pink-800">In this game, you will:</p>
                         <ul class="space-y-2 text-pink-700 list-disc list-inside">
-                            <li>See a subtraction problem</li>
-                            <li>Choose the correct answer</li>
+                            <li>Start with a group of animals</li>
+                            <li>Some animals will leave</li>
+                            <li>Count how many animals remain</li>
                             <li>Earn stars for correct answers</li>
                         </ul>
                     </div>
@@ -66,42 +67,48 @@
                 <div>
                     <!-- Question display -->
                     <div class="mb-8 text-center">
-                        <h2 class="mb-4 text-xl text-gray-700">What is the difference?</h2>
+                        <h2 class="mb-4 text-xl text-gray-700">How many animals are left?</h2>
 
-                        <div class="flex items-center justify-center">
-                            <div class="inline-flex items-center p-6 text-4xl font-bold bg-pink-100 rounded-2xl">
-                                <div class="p-4 mr-4 bg-white rounded-lg shadow-md">
-                                    <span class="text-pink-600" x-text="currentProblem.num1"></span>
+                        <!-- Visual representation of animals -->
+                        <div class="flex flex-col items-center justify-center p-6 mx-auto mb-6 bg-pink-100 rounded-2xl"
+                            style="max-width: 500px;">
+                            <!-- Beginning animals -->
+                            <div class="p-4 mb-6 bg-white rounded-lg">
+                                <div class="flex flex-wrap justify-center mb-2">
+                                    <template x-for="(_, i) in Array(currentProblem.num1)" :key="i">
+                                        <img :src="'/images/characters/' + currentProblem.animalType + '.png'"
+                                            class="w-12 h-12 m-1"
+                                            :class="{ 'opacity-30': i >= (currentProblem.num1 - currentProblem.num2) }"
+                                            :alt="currentProblem.animalType">
+                                    </template>
                                 </div>
-                                <div class="mr-4 text-pink-600">−</div>
-                                <div class="p-4 mr-4 bg-white rounded-lg shadow-md">
-                                    <span class="text-pink-600" x-text="currentProblem.num2"></span>
-                                </div>
-                                <div class="mr-4 text-pink-600">=</div>
-                                <div class="p-4 bg-white border-2 border-pink-300 border-dashed rounded-lg shadow-md">
-                                    <span class="text-gray-400">?</span>
-                                </div>
+                                <p class="text-sm text-gray-600 italic">
+                                    (The faded animals have left)
+                                </p>
+                            </div>
+
+                            <!-- Minus sign -->
+                            <div
+                                class="flex items-center justify-center w-12 h-12 mb-6 font-bold text-white bg-pink-500 rounded-full">
+                                <span class="text-2xl">−</span>
+                            </div>
+
+                            <!-- Animals that leave -->
+                            <div class="flex flex-wrap justify-center p-4 mb-6 bg-white rounded-lg">
+                                <template x-for="(_, i) in Array(currentProblem.num2)" :key="i">
+                                    <img :src="'/images/characters/' + currentProblem.animalType + '.png'"
+                                        class="w-12 h-12 m-1 opacity-70" :alt="currentProblem.animalType">
+                                </template>
+                            </div>
+
+                            <!-- Equals sign and question mark -->
+                            <div class="flex items-center">
+                                <span class="mx-4 text-3xl font-bold text-pink-600">=</span>
+                                <div
+                                    class="flex items-center justify-center w-12 h-12 text-2xl font-bold text-gray-500 bg-white border-2 border-pink-300 border-dashed rounded-lg">
+                                    ?</div>
                             </div>
                         </div>
-
-                        <!-- Visual representation (for level 1) -->
-                        <template x-if="difficultyLevel === 1">
-                            <div class="flex justify-center mt-6">
-                                <div class="p-4 bg-white shadow-md rounded-xl">
-                                    <div class="flex flex-wrap justify-center mb-4">
-                                        <template x-for="i in currentProblem.num1">
-                                            <img :src="'/images/characters/monkey.png'" class="w-8 h-8 m-1"
-                                                :class="{ 'opacity-30': i > (currentProblem.num1 - currentProblem.num2) }"
-                                                alt="monkey">
-                                        </template>
-                                    </div>
-                                    <p class="mt-2 text-sm text-gray-600">
-                                        <span x-text="currentProblem.num1"></span> monkeys -
-                                        <span x-text="currentProblem.num2"></span> monkeys = ?
-                                    </p>
-                                </div>
-                            </div>
-                        </template>
                     </div>
 
                     <!-- Answer options -->
@@ -147,7 +154,7 @@
             <template x-if="gameState === 'results'">
                 <div class="py-6 text-center">
                     <h2 class="mb-2 text-2xl font-bold text-gray-800">Great Job!</h2>
-                    <p class="mb-8 text-lg text-gray-600">You completed the subtraction challenge!</p>
+                    <p class="mb-8 text-lg text-gray-600">You completed the animal subtraction challenge!</p>
 
                     <!-- Score display -->
                     <div class="flex justify-center mb-6">
@@ -169,24 +176,21 @@
                     <div class="flex justify-center mb-8">
                         <template x-if="scorePercentage >= 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey-happy.png') }}" alt="Happy Monkey"
-                                    class="h-40 mx-auto">
+                                <img src="/images/characters/monkey.png" alt="Happy Monkey" class="h-40 mx-auto">
                                 <p class="mt-2 font-medium text-green-600">Fantastic subtracting!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage >= 50 && scorePercentage < 80">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey.png') }}" alt="Monkey"
-                                    class="h-40 mx-auto">
+                                <img src="/images/characters/monkey.png" alt="Monkey" class="h-40 mx-auto">
                                 <p class="mt-2 font-medium text-blue-600">Good work!</p>
                             </div>
                         </template>
 
                         <template x-if="scorePercentage < 50">
                             <div class="text-center">
-                                <img src="{{ secure_asset('images/characters/monkey-thinking.png') }}"
-                                    alt="Thinking Monkey" class="h-40 mx-auto">
+                                <img src="/images/characters/monkey.png" alt="Thinking Monkey" class="h-40 mx-auto">
                                 <p class="mt-2 font-medium text-purple-600">Let's practice more!</p>
                             </div>
                         </template>
@@ -224,11 +228,15 @@
                 totalQuestions: 10,
                 currentProblem: {
                     num1: 0,
-                    num2: 0
+                    num2: 0,
+                    animalType: 'monkey'
                 },
                 answerOptions: [],
                 selectedAnswer: null,
                 isAnswerCorrect: false,
+
+                // Available animal types based on assets
+                animalTypes: ['monkey', 'panda', 'cat', 'dog', 'fish', 'fox', 'lion', 'owl', 'rabbit', 'turtle'],
 
                 // Score tracking
                 score: 0,
@@ -272,28 +280,28 @@
                 generateQuestion() {
                     // Define number range based on difficulty
                     let maxNum1 = 5;
-                    let maxNum2 = 5;
+                    let maxNum2 = 3;
 
                     switch (this.difficultyLevel) {
                         case 1:
                             maxNum1 = 5;
-                            maxNum2 = 5;
+                            maxNum2 = 3;
                             break;
                         case 2:
-                            maxNum1 = 10;
-                            maxNum2 = 10;
+                            maxNum1 = 7;
+                            maxNum2 = 5;
                             break;
                         case 3:
-                            maxNum1 = 20;
-                            maxNum2 = 10;
+                            maxNum1 = 10;
+                            maxNum2 = 7;
                             break;
                         case 4:
-                            maxNum1 = 20;
-                            maxNum2 = 20;
+                            maxNum1 = 12;
+                            maxNum2 = 10;
                             break;
                         default:
                             maxNum1 = 5;
-                            maxNum2 = 5;
+                            maxNum2 = 3;
                     }
 
                     // Generate random numbers for the problem (ensure result is not negative)
@@ -305,9 +313,13 @@
                         [num1, num2] = [num2, num1];
                     }
 
+                    // Select random animal
+                    const animalIndex = Math.floor(Math.random() * this.animalTypes.length);
+
                     this.currentProblem = {
                         num1,
-                        num2
+                        num2,
+                        animalType: this.animalTypes[animalIndex]
                     };
 
                     // Generate answer options
@@ -327,8 +339,8 @@
                         if (this.difficultyLevel === 1) {
                             distractor = Math.floor(Math.random() * 5); // 0-4
                         } else {
-                            // Generate distractors within ±3 of the correct difference, but ensure they're unique
-                            const offset = Math.floor(Math.random() * 7) - 3; // -3 to +3
+                            // Generate distractors within ±2 of the correct difference, but ensure they're unique
+                            const offset = Math.floor(Math.random() * 5) - 2; // -2 to +2
                             distractor = Math.max(0, correctDifference + offset);
                         }
 
